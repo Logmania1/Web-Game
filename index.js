@@ -3,6 +3,7 @@ class DeckOfCards {
         this.deck = []
         this.discardPile = []
         this.hand = []
+        this.dealerHand = []
         
     }
 
@@ -29,10 +30,18 @@ class DeckOfCards {
 
     }
 
+    deal() {
+        myDeckOfCards.hand = myDeckOfCards.deck.slice(50)
+        myDeckOfCards.shuffle()
+        myDeckOfCards.dealerHand = myDeckOfCards.deck.slice(50)
+        
+    }
 
 }
+
 
 const myDeckOfCards = new DeckOfCards()
 myDeckOfCards.init()
 myDeckOfCards.shuffle()
-console.log(myDeckOfCards.deck)
+myDeckOfCards.deal()
+console.log(myDeckOfCards)
