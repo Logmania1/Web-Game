@@ -9,7 +9,7 @@
     background-image: url("Assets/59275.jpg");
     margin: auto;
     width: 70%;
-
+    align-items: center;
 }
 
 h1{
@@ -26,4 +26,22 @@ h1{
     color:azure;
     font-size: 2em;
     display: block;
+}
+
+.blankcard{
+    width: 12em;
+    display: inline-block;
+    margin: 0, 2em;
+}
+
+.dealercards{
+    align-content: center;
+    margin: auto;
+    background-color: greenyellow;
+    display: block;
+}
+
+.playercards{
+    margin:auto;
+    padding: auto;
 }

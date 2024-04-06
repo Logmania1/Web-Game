@@ -39,6 +39,12 @@ class DeckOfCards {
     
 }
 
+// function addImage() {
+//     let img = document.createElement('img');
+//         img.src = `Assets/CardFaces${this.value}+${this.suit}.jpg`;
+//         document.getElementsByClassName('dealercards').appendChild(img);
+// }
+
 const myDeckOfCards = new DeckOfCards()
 myDeckOfCards.init()
 myDeckOfCards.shuffle()
@@ -50,6 +56,8 @@ const button = document.createElement('button');
         
     button.addEventListener('click', () => {    
         myDeckOfCards.deal();
+        // addImage(myDeckOfCards.dealerHand(0))
+        // addImage(myDeckOfCards.dealerHand(1))
         console.log(myDeckOfCards.dealerHand)
         console.log(myDeckOfCards.hand)
 });
@@ -59,4 +67,3 @@ document.body.appendChild(button);
 // myDeckOfCards.deal()
 
 
-document.createElement('img')
