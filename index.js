@@ -36,12 +36,27 @@ class DeckOfCards {
         myDeckOfCards.dealerHand = myDeckOfCards.deck.slice(50)
         
     }
-
+    
 }
-
 
 const myDeckOfCards = new DeckOfCards()
 myDeckOfCards.init()
 myDeckOfCards.shuffle()
-myDeckOfCards.deal()
-console.log(myDeckOfCards.hand)
+
+const button = document.createElement('button');
+    button.innerText = 'Deal';        
+    button.id = 'deal'; 
+        
+        
+    button.addEventListener('click', () => {    
+        myDeckOfCards.deal();
+        console.log(myDeckOfCards.dealerHand)
+        console.log(myDeckOfCards.hand)
+});
+
+document.body.appendChild(button);
+
+// myDeckOfCards.deal()
+
+
+document.createElement('img')
