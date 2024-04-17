@@ -38,12 +38,12 @@ class DeckOfCards {
     }
     
 }
-
-// function addImage() {
-//     let img = document.createElement('img');
-//         img.src = `Assets/CardFaces${this.value}+${this.suit}.jpg`;
-//         document.getElementsByClassName('dealercards').appendChild(img);
-// }
+document
+function addImage() {
+    let img = document.createElement('img');
+        img.src = `Assets/CardFaces/${this.value}+${this.suit}.jpg`;
+        document.getElementsByClassName('dealercards').appendChild(img);
+}
 
 const myDeckOfCards = new DeckOfCards()
 myDeckOfCards.init()

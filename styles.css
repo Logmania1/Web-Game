@@ -2,7 +2,7 @@
     background-image: url("Assets/dark-brown-wood-texture-background-with-design-space_53876-160410.jpg");
     margin: auto;
     width: 60%; 
-
+    
 }
 
 .drape{
@@ -10,6 +10,8 @@
     margin: auto;
     width: 70%;
     align-items: center;
+    padding-bottom: 5em;
+    
 }
 
 h1{
@@ -31,17 +33,20 @@ h1{
 .blankcard{
     width: 12em;
     display: inline-block;
-    margin: 0, 2em;
+    margin: 0, 12em;
 }
 
 .dealercards{
-    align-content: center;
+    text-align: center;
     margin: auto;
-    background-color: greenyellow;
+    padding-top: 5em;
     display: block;
+    
 }
 
 .playercards{
     margin:auto;
+    margin-top: 10em;
     padding: auto;
+    text-align: center;
 }
