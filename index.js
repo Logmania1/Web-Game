@@ -15,8 +15,8 @@ class DeckOfCards {
                 this.deck.push(values[j] + suits[i]);
             }
         }
-            }
-        
+            
+    }
     
 
     shuffle() {
@@ -28,10 +28,23 @@ class DeckOfCards {
 
     }
 
-    deal(a) {
-        myDeckOfCards.hand = myDeckOfCards.deck.slice(52-a)
-        
-        
+    deal() {
+        hidden = myDeckOfCards.deck.pop();
+        dealerSum += getValue(hidden);
+        dealerAceCount += checkAce(hidden);
+      
+
+        for (let i = 0; i < 2; i++) {
+            let cardImg = document.createElement('img');
+            let card = myDeckOfCards.deck.pop();
+            cardImg.src = "./Assets/CardFaces/" + card + ".jpg";
+            cardImg.id = 'card'
+            playerSum += getValue(card);
+            playerAceCount += checkAce(card);
+            document.getElementById("playercards").append(cardImg);
+        }
+
+        console.log(playerSum)
     }
     hit(a) {
         myDeckOfCards.hand.length = 0
@@ -43,6 +56,24 @@ class DeckOfCards {
         myDeckOfCards.dealerHand = myDeckOfCards.deck.slice(52-a)
     }
 }
+function getValue(card) {
+    let data = card.charAt(0)
+    let value = data
+
+    if (isNaN(value)) {
+        if (value == 'A') {
+            return 11;
+        }
+        return 10;
+    }
+    return parseInt(value);
+}
+function checkAce(card) {
+    if (card[0] == "A") {
+        return 1;
+    }
+    return 0;
+}
 
 function addImage() {
     for (let i = 0; i < myDeckOfCards.dealerHand.length; i++) {
@@ -52,7 +83,7 @@ function addImage() {
     }
 }
 var dealerSum = 0;
-var yourSum = 0;
+var playerSum = 0;
 
 var dealerAceCount = 0;
 var playerAceCount = 0;
@@ -65,7 +96,54 @@ const myDeckOfCards = new DeckOfCards()
 myDeckOfCards.init()
 myDeckOfCards.shuffle()
 
+const button = document.createElement('button');
+    button.innerText = 'Deal';        
+    button.id = 'deal'; 
+        
+        
+    button.addEventListener('click', () => {    
+        myDeckOfCards.deal(2);
+        console.log(myDeckOfCards.hand)
+});
 
-// myDeckOfCards.deal()
+// document.body.appendChild(button);
 
-console.log(myDeckOfCards)
+document.getElementById('hit').addEventListener('click', hit);
+function hit() {
+    if (!canHit) {
+        return;
+    }
+    let cardImg = document.createElement('img');
+            let card = myDeckOfCards.deck.pop();
+            cardImg.src = "./Assets/CardFaces/" + card + ".jpg";
+            cardImg.id = 'card'
+            playerSum += getValue(card);
+            playerAceCount += checkAce(card);
+            document.getElementById("playercards").append(cardImg);
+
+        if (reduceAce(playerSum, playerAceCount) > 21) {
+            canHit = false;
+        }
+
+        }
+
+// document.body.appendChild(button1);
+
+const button2 = document.createElement('button');
+    button2.innerText = 'Stay';        
+    button2.id = 'stay'; 
+        
+        
+    button2.addEventListener('click', () => {    
+        myDeckOfCards.stay(2)
+        addImage()
+        console.log(myDeckOfCards.dealerHand)
+});
+
+// document.body.appendChild(button2);
+myDeckOfCards.deal()
+
+function reduceAce(playerSum, playerAceCount) {
+    
+}
+

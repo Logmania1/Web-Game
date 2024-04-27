@@ -1,4 +1,4 @@
-.table{
+#table{
     background-image: url("Assets/dark-brown-wood-texture-background-with-design-space_53876-160410.jpg");
     margin: auto;
     width: 60%; 
@@ -36,7 +36,7 @@ h1{
     margin: 0, 12em;
 }
 
-.dealercards{
+#dealercards{
     text-align: center;
     margin: auto;
     padding-top: 5em;
@@ -44,7 +44,7 @@ h1{
     
 }
 
-.playercards{
+#playercards{
     margin:auto;
     margin-top: 10em;
     padding: auto;
