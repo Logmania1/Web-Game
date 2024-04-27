@@ -30,7 +30,7 @@ h1{
     display: block;
 }
 
-.blankcard{
+#card{
     width: 12em;
     display: inline-block;
     margin: 0, 12em;
@@ -49,4 +49,21 @@ h1{
     margin-top: 10em;
     padding: auto;
     text-align: center;
+}
+
+h2{
+    margin: auto;
+    font-size: 10em;
+    text-align: center;
+    margin-top: 1.5em;
+    color:goldenrod;
+    
+}
+h3{
+    margin: auto;
+    font-size: 10em;
+    text-align: center;
+    margin-top: 1.5em;
+    color:darkred;
+    
 }
