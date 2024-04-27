@@ -32,8 +32,15 @@ class DeckOfCards {
         hidden = myDeckOfCards.deck.pop();
         dealerSum += getValue(hidden);
         dealerAceCount += checkAce(hidden);
-      
-
+        while (dealerSum < 17) { 
+            let cardImg = document.createElement('img');
+            let card = myDeckOfCards.deck.pop();
+            cardImg.src = "./Assets/CardFaces/" + card + ".jpg";
+            cardImg.id = 'card'
+            playerSum += getValue(card);
+            playerAceCount += checkAce(card);
+            document.getElementById("playercards").append(cardImg);
+        }
         for (let i = 0; i < 2; i++) {
             let cardImg = document.createElement('img');
             let card = myDeckOfCards.deck.pop();
@@ -125,25 +132,40 @@ function hit() {
             canHit = false;
         }
 
-        }
+}
+document.getElementById("stay").addEventListener('click', stay)
 
-// document.body.appendChild(button1);
 
-const button2 = document.createElement('button');
-    button2.innerText = 'Stay';        
-    button2.id = 'stay'; 
-        
-        
-    button2.addEventListener('click', () => {    
-        myDeckOfCards.stay(2)
-        addImage()
-        console.log(myDeckOfCards.dealerHand)
-});
-
-// document.body.appendChild(button2);
 myDeckOfCards.deal()
 
 function reduceAce(playerSum, playerAceCount) {
-    
+    while (playerSum > 21 && playerAceCount > 0) {
+        playerSum -= 10;
+        playerAceCount -= 1;
+    }
+    return playerSum;
 }
+function stay() {
+    dealerSum = reduceAce(dealerSum, dealerAceCount)
+    playerSum = reduceAce(playerSum, playerAceCount)
 
+    canHit = false;
+    document.getElementById('blankcard').src = "./Assets/CardFaces/" + hidden + '.jpg'
+
+    let message = "";
+    if (playerSum > 21) {
+        window.location.href = './lose.html'
+    }
+    else if (dealerSum > 21) {
+        window.location.href = './win.html'
+    }
+    else if (playerSum == dealerSum) {
+        message = "Tie"
+    }
+    else if (playerSum > dealerSum) {
+        window.location.href = './win.html'
+    }
+    else if (playerSum < dealerSum) {
+        window.location.href = './lose.html'
+    }
+}
