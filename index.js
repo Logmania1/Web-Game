@@ -32,18 +32,26 @@ class DeckOfCards {
         hidden = myDeckOfCards.deck.pop();
         dealerSum += getValue(hidden);
         dealerAceCount += checkAce(hidden);
+        
         while (dealerSum < 17) { 
             let cardImg = document.createElement('img');
             let card = myDeckOfCards.deck.pop();
             cardImg.src = "./Assets/CardFaces/" + card + ".jpg";
             cardImg.id = 'card'
-            playerSum += getValue(card);
-            playerAceCount += checkAce(card);
-            document.getElementById("playercards").append(cardImg);
+            dealerSum += getValue(card);
+            dealerAceCount += checkAce(card);
+            document.getElementById("dealercards").append(cardImg);
+         
         }
-      
+        console.log(dealerSum)
     }
 }
+
+const myDeckOfCards = new DeckOfCards()
+myDeckOfCards.init()
+myDeckOfCards.shuffle()
+
+
 
 function getValue(card) {
     let data = card.charAt(0)
@@ -75,7 +83,6 @@ var hidden;
 var deck;
 
 var canHit = true;
-const myDeckOfCards = new DeckOfCards()
 
 document.getElementById("deal").addEventListener('click', playerdeal)
 
@@ -127,7 +134,7 @@ function stay() {
     playerSum = reduceAce(playerSum, playerAceCount)
 
     canHit = false;
-    document.getElementById('blankcard').src = "./Assets/CardFaces/" + hidden + '.jpg'
+    document.getElementsByClassName('blankcard').src = "./Assets/CardFaces/" + hidden + '.jpg'
 
     if (playerSum > 21) {
         window.location.href = './lose.html'
@@ -145,3 +152,5 @@ function stay() {
         window.location.href = './lose.html'
     }
 }
+
+myDeckOfCards.deal()
